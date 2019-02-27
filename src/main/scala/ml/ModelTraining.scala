@@ -27,9 +27,11 @@ object ModelTraining extends AppConf {
       Rating(x.getInt(0), x.getInt(1), x.getDouble(2))
     }
 
-    val test2 = testRDD.map {
-      case Rating(userId, movieId, rating) =>
-        ((userId, movieId), rating)
+    val test2 = testRDD.map { x =>
+      x match {
+        case Rating(userId, movieId, rating) => ((userId, movieId), rating)
+        case _ => throw new Exception("error")
+      }
     }
 
 
