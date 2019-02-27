@@ -62,29 +62,29 @@ object ETL {
 
     // 通过数据写入到HDFS,将表存到 hive 中
     // 数据写到 HDFS
-    links.write.mode(SaveMode.Overwrite).parquet("hdfs://node1:8020/tmp/links")
+    links.write.mode(SaveMode.Overwrite).parquet("hdfs://node1:8020/tmp/links_parquet")
     hc.sql("drop table if exists links")
     hc.sql("create table if not exists links(movieId int,imdbId int,tmdbId int) stored as parquet")
-    hc.sql("load data inpath 'hdfs://node1:8020/tmp/links' overwrite into table links")
+    hc.sql("load data inpath 'hdfs://node1:8020/tmp/links_parquet' overwrite into table links")
 
 
     // Movies(movieId:Int,title:String,genres:String)
-    movies.write.mode(SaveMode.Overwrite).parquet("hdfs://node1:8020/tmp/movies")
+    movies.write.mode(SaveMode.Overwrite).parquet("hdfs://node1:8020/tmp/movies_parquet")
     hc.sql("drop table if exists movies")
     hc.sql("create table if not exists movies(movieId int,title string,genres string) stored as parquet")
-    hc.sql("load data inpath 'hdfs://node1:8020/tmp/movies' overwrite into table movies")
+    hc.sql("load data inpath 'hdfs://node1:8020/tmp/movies_parquet' overwrite into table movies")
 
     // Ratings(userId:Int,movieId:Int,rating:Double,timestamp:Int)
-    ratings.write.mode(SaveMode.Overwrite).parquet("/tmp/ratings")
+    ratings.write.mode(SaveMode.Overwrite).parquet("/tmp/ratings_parquet")
     hc.sql("drop table if exists ratings")
     hc.sql("create table if not exists ratings(userId int,movieId int,rating double,timestamp int) stored as parquet")
-    hc.sql("load data inpath '/tmp/ratings' overwrite into table ratings")
+    hc.sql("load data inpath '/tmp/ratings_parquet' overwrite into table ratings")
 
     // Tags(userId:Int,movieId:Int,tag:String,timestamp:Int)
-    tags.write.format("parquet").mode(SaveMode.Overwrite).save("hdfs://node1:8020/tmp/tags")
+    tags.write.format("parquet").mode(SaveMode.Overwrite).save("hdfs://node1:8020/tmp/tags_parquet")
     hc.sql("drop table if exists tags")
     hc.sql("create table if not exists tags(userId int,movieId int,tag string,timestamp int) stored as parquet")
-    hc.sql("load data inpath '/tmp/tags' overwrite into table tags")
+    hc.sql("load data inpath '/tmp/tags_parquet' overwrite into table tags")
 
   }
 
