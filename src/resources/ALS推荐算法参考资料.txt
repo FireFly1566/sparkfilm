@@ -1,0 +1,12 @@
+矩阵相乘
+http://baike.baidu.com/item/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/5446029
+
+ALS算法的来源(paper)
+Collaborative Filtering for Implicit Feedback Datasets
+Large-Scale Parallel Collaborative Filtering for the Netflix Prize
+
+http://spark.apache.org/docs/1.6.2/mllib-collaborative-filtering.html#collaborative-filtering
+
+https://en.wikipedia.org/wiki/Collaborative_filtering
+https://en.wikipedia.org/wiki/Recommender_system
+https://en.wikipedia.org/wiki/Information_retrieval
