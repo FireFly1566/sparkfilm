@@ -47,7 +47,8 @@ object RatingData {
     hc.sql("load data inpath '/tmp/testData' overwrite into table testData")
 
 
-    val ratingRDD = hc.sql("select * from trainingData").rdd.map(x => Rating(x.getInt(0),x.getInt(1),x.getDouble(2)))
+    val ratingRDD = hc.sql("select * from trainingData").rdd.map(x =>
+      Rating(x.getInt(0),x.getInt(1),x.getDouble(2)))
 
 
     // 第二个参数 rank : 特征向量的个数（此处就是电影的评分）
