@@ -81,7 +81,7 @@ object ETL {
     hc.sql("load data inpath '/tmp/ratings_parquet' overwrite into table ratings")
 
     // Tags(userId:Int,movieId:Int,tag:String,timestamp:Int)
-    tags.write.format("parquet").mode(SaveMode.Overwrite).save("hdfs://node1:8020/tmp/tags_parquet")
+    tags.write.mode(SaveMode.Overwrite).parquet("hdfs://node1:8020/tmp/tags_parquet")
     hc.sql("drop table if exists tags")
     hc.sql("create table if not exists tags(userId int,movieId int,tag string,timestamp int) stored as parquet")
     hc.sql("load data inpath '/tmp/tags_parquet' overwrite into table tags")
@@ -105,7 +105,7 @@ object ETL {
 
     val b = a.drop(2).dropRight(1).mkString.replace("\"", "")
 
-    val output = a + "," + b + "," + tail
+    val output = head + "," + b + "," + tail
 
     output
   }
