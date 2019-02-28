@@ -22,7 +22,7 @@ object RecommendForAllUsers extends AppConf {
     val allusers = users.rdd.map(_.getInt(0)).toLocalIterator
 
     // 方法 1， 可行，但是效率不高
-    val modelpath = "/tmp/BestModel/0.8616887644293227"
+    val modelpath = "/tmp/BestModel/0.8578486285109932"
     val model = MatrixFactorizationModel.load(sc, modelpath)
     while (allusers.hasNext) {
 
