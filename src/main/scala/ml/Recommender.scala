@@ -12,7 +12,7 @@ object Recommender extends AppConf {
     val index = 139
     val uid = users.take(index).last.getInt(0)
 
-    val modelpath = "/tmp/BestModel/0.8616887644293227"
+    val modelpath = "/tmp/BestModel/0.8578486285109932"
     val model = MatrixFactorizationModel.load(sc, modelpath)
 
     //推荐 5 个产品
