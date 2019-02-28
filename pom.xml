@@ -11,6 +11,7 @@
         <spark.version>1.6.3</spark.version>
         <hadoop.version>2.6.0-cdh5.7.0</hadoop.version>
         <hbase.version>1.2.0-cdh5.7.0</hbase.version>
+        <phoenix.version>4.12.0-HBase-1.2</phoenix.version>
     </properties>
 
     <repositories>
@@ -104,8 +105,24 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.38</version>
+            <version>5.1.44</version>
         </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.apache.phoenix/phoenix-spark -->
+        <dependency>
+            <groupId>org.apache.phoenix</groupId>
+            <artifactId>phoenix-spark</artifactId>
+            <version>${phoenix.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.hbase/hbase -->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase</artifactId>
+            <version>${hbase.version}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>log4j</groupId>
